@@ -21,6 +21,9 @@ GRAFANA_BUILD=20271043721
 GRAFANA_ARCH=arm64
 ```
 
+Use `arm64` for `aarch64` containers. For `x86_64`, set `GRAFANA_ARCH=amd64`
+and pick the matching Linux RPM from the download page.
+
 ## Build the image
 
 ```bash

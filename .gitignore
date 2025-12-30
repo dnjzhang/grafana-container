@@ -186,3 +186,4 @@ pnpm-debug.log*
 topic-hub-web/node_modules/
 topic-hub-web/dist/
 .chroma
+*~
