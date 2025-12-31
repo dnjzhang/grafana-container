@@ -42,6 +42,32 @@ docker run --rm -p 3000:3000 grafana-ol8:${GRAFANA_VERSION}
 
 Open `http://localhost:3000` and log in with `admin` / `admin`.
 
+## Docker Compose (Grafana + Prometheus + OTel Collector)
+
+The `compose.yaml` file starts Grafana, Prometheus, and an OTel Collector that
+exports metrics for Prometheus to scrape. The compose file expects a local
+image tag of `grafana-ol8:latest`, so build it with that tag first:
+
+```bash
+docker build -f Dockerfile-grafana -t grafana-ol8:latest .
+```
+
+Start the stack:
+
+```bash
+docker compose up -d
+```
+
+Stop and remove containers, networks, and volumes:
+
+```bash
+docker compose down
+```
+
+The compose file uses internal-only `expose` ports. If you want to access the
+Grafana or Prometheus UI from the host, add `ports` mappings to `compose.yaml`
+and restart the stack.
+
 ## Connect to Prometheus (manual)
 
 Run Prometheus and Grafana on the same Docker network so Grafana can reach it by
